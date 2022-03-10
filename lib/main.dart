@@ -54,8 +54,13 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   }
 
   void findAngle() {
-    int angle = inp2Count - inp1Count;
-    setRotation(angle);
+    if (inp1Count > inp2Count) {
+      int angle = -((inp1Count - inp2Count) % 90);
+      setRotation(angle);
+    } else {
+      int angle = (inp2Count - inp1Count) % 90;
+      setRotation(angle);
+    }
   }
 
   @override
